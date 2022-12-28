@@ -1,4 +1,4 @@
-import { getDiff } from '../getDiff';
+import getDiff from '../getDiff.js';
 
 describe('getDiff', () => {
   test('prop is deleted', () => {

@@ -2,7 +2,7 @@ import { program } from 'commander';
 import path from 'path';
 import fs from 'fs';
 
-import { getDiff } from './getDiff.js';
+import getDiff from './getDiff.js';
 
 program
   .arguments('<filename1> <filename2>')

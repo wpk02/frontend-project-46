@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const NEW_LINE = '\n';
 
-export const getDiff = (object1, object2) => {
+export default (object1, object2) => {
   const map = new Map();
 
   Object.entries(object1).forEach(([key, value]) => {
@@ -38,7 +38,7 @@ export const getDiff = (object1, object2) => {
     diff = diff + NEW_LINE + propInfo;
   });
 
-  diff = diff + NEW_LINE + '}';
+  diff = `${diff}${NEW_LINE}}`;
 
   return diff;
 };
