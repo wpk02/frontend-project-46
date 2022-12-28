@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/wpk02/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/wpk02/frontend-project-46/actions)",
+  "description": "Find diff of two files.",
   "main": "gendiff.js",
   "type": "module",
   "simple-git-hooks": {
