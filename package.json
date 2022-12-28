@@ -4,8 +4,11 @@
   "description": "[![Actions Status](https://github.com/wpk02/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/wpk02/frontend-project-46/actions)",
   "main": "gendiff.js",
   "type": "module",
+  "simple-git-hooks": {
+    "pre-push": "make lint"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,9 @@
   "homepage": "https://github.com/wpk02/frontend-project-46#readme",
   "dependencies": {
     "commander": "^9.4.1",
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "inquirer": "^9.1.4",
     "lodash": "^4.17.21"
   }
