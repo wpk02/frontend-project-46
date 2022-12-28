@@ -1,7 +1,8 @@
 import { program } from 'commander';
 import path from 'path';
 import fs from 'fs';
-import _ from 'lodash';
+
+import { getDiff } from './getDiff.js';
 
 program
   .arguments('<filename1> <filename2>')
@@ -21,40 +22,9 @@ program
     const object1 = JSON.parse(fs.readFileSync(fullName1));
     const object2 = JSON.parse(fs.readFileSync(fullName2));
 
-    const map = new Map();
+    const diff = getDiff(object1, object2);
 
-    Object.entries(object1).forEach(([key, value]) => {
-      if (!Object.hasOwn(object2, key)) {
-        map.set(`  - ${key}`, value);
-      } else {
-        const value2 = object2[key];
-
-        if (value === value2) {
-          map.set(`    ${key}`, value);
-        } else {
-          map.set(`  - ${key}`, value);
-          map.set(`  + ${key}`, value2);
-        }
-      }
-    });
-
-    Object.entries(object2).forEach(([key, value]) => {
-      if (!Object.hasOwn(object1, key)) {
-        map.set(`  + ${key}`, value);
-      }
-    });
-
-    const sortedProps = _.sortBy(Array.from(map), [
-      ([key]) => _.trimStart(key, ' +-'),
-    ]);
-
-    console.log('{');
-
-    sortedProps.forEach(([key, value]) => {
-      console.log(`${key}: ${value}`);
-    });
-
-    console.log('}');
+    console.log(diff);
   });
 
 program.parse();
